@@ -1,0 +1,23 @@
+@startuml objectDiagram
+object appleStock
+    appleStock : name = "Apple"
+    appleStock : price = 100.0
+object microsoftStock
+    microsoftStock : name = "sMicrosoft"
+    microsoftStock : price = 120.0
+object googleStock
+    googleStock : name = "Google"
+    googleStock : price = 190.0
+object teslaStock
+    teslaStock : name = "tesla"
+    teslaStock : price = 150.0
+object index
+    index : name = "#i1: Apple, Microsoft, Google"
+    index : Stocks = {appleStock, microsoftStock, googleStock, tesla}
+
+index --> appleStock : stock
+index --> microsoftStock : stock
+index --> googleStock : stock
+index --> teslaStock : stock
+
+@enduml

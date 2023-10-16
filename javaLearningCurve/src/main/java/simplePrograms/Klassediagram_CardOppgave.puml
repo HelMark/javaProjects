@@ -1,0 +1,24 @@
+@startuml ClassDiagram
+
+CardDeck "Cards: *" -- "CardDeck: 1" Card : KortIKortstokk
+ 
+class Card [[java:oving3]] {
+    - char cardType
+    - int cardValue
+    {method} - boolean isValidType(char)
+             - boolean isValidValue(int)
+             + Card(char, int)
+             + char getSuit()
+             + int getFace()
+}
+
+class CardDeck [[java:oving3]] {
+    - List<Character> suits
+    - ArrayList<Card> cardDeck
+    {method} - boolean isValidNumber(int)
+             + Carddeck(int)
+             + int getCardCount()
+             + Card getCard(int)
+             + void shufflePerfectly()
+}
+@enduml

@@ -1,0 +1,20 @@
+@startuml squenseDiagram
+actor       Actor
+participant StringMergingIteratorProgram
+participant StringMergingIterator
+
+Actor -> StringMergingIteratorProgram : mergeIterator = New StringMergingIterator(one, two)
+StringMergingIteratorProgram -> StringMergingIterator: StringMergingIterator(one, two)
+
+Actor -> StringMergingIteratorProgram : while(mergeIterator.hasNext()){value.add(mergeIterator.next())}
+    loop max(one.length(), two.length())
+        StringMergingIteratorProgram -> StringMergingIterator: mergIterator.next()
+        StringMergingIterator --> StringMergingIteratorProgram : one/two and index++
+        StringMergingIteratorProgram ->  StringMergingIterator  :value.add(one/two)
+        StringMergingIterator --> StringMergingIteratorProgram : value
+    end
+Actor -> StringMergingIteratorProgram : getValue()
+StringMergingIteratorProgram -> StringMergingIterator : getValue()
+StringMergingIterator --> StringMergingIteratorProgram : value
+StringMergingIteratorProgram --> Actor : value
+@enduml

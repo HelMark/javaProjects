@@ -1,0 +1,40 @@
+@startuml twitter
+
+TwitterAccount "TwitterAccount: 1" -- "Tweet: *" Tweet : TweetsHosBruekr
+TwitterAccount "TwitterAccount: *" -- TwitterAccount
+Tweet "ReTweet: *" -- Tweet
+ 
+class TwitterAccount [[java:oving3]] {
+    - String username
+    - ArrayList<Tweet> tweets
+    - ArrayList<Tweet> retweets
+    - ArrayList<TwitterAccount> following
+    {method} + TwitterAccount(String)
+                + String getUsername()
+                + void follow(TwitterAccount)
+                + void unfollow(TwitterAccount)
+                + boolean isFollowing(TwitterAccount)
+                + boolean isFollowedBy(TwitterAccount)
+                + void tweet(String)
+                + void retweet(Tweet)
+                + Tweet getTweet(int)
+                + Tweet getTweetCount(int)
+                + int getRetweetCount()
+}
+
+class Tweet [[java:oving3]] {
+    - String tweet
+    - Tweet reTweet
+    - int reTweetCount
+    - TwitterAccount account
+    {method} - boolean isFromSameAccount(Tweet)
+             - void increaseRetweet()
+             + Tweet(TwitterAccount account, String)
+             + Tweet(TwitterAccount account, Tweet)
+             + String getTweet()
+             + String getText()
+             + TwitterAccount getOwner()
+             + Tweet getOriginalTweet()
+             + int getRetweetCount()
+}
+@enduml
